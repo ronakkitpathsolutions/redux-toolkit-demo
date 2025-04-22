@@ -1,9 +1,15 @@
-import React from 'react'
-import useUsers from './useUsers'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUsers } from '../../redux/slices/users.slice'
 
 const Users = () => {
 
-  const { users } = useUsers()
+  const dispatch = useDispatch()
+  const users = useSelector((store) => store.users.users)
+
+  useEffect(() => {
+      dispatch(fetchUsers({}))
+  }, [dispatch])
 
   if(users?.isLoading) {
     return <div>Loading...</div>

@@ -5,7 +5,7 @@ import { fetchUsers } from "../../redux/slices/users.slice"
 const useUsers = () => {
 
     const dispatch = useDispatch()
-    const users = useSelector((state) => state.users.users)
+    const users = useSelector((store) => store.users.users)
 
     useEffect(() => {
         dispatch(fetchUsers({}))
